@@ -1,0 +1,38 @@
+{
+  "name": "react-boilerplate",
+  "version": "1.0.0",
+  "description": "to be a quick bolierplate for full suits of react, built by webpack",
+  "main": "main.js",
+  "scripts": {
+    "start": "webpack-dev-server --inline --hot --apiHistoryFallBack",
+    "build": "webpack"
+  },
+  "keywords": [
+    "react",
+    "webpack"
+  ],
+  "author": "wind_fantasy",
+  "license": "MIT",
+  "dependencies": {
+    "moment": "^2.14.1",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.7.0",
+    "react-router-redux": "^4.0.5",
+    "redux": "^3.5.2",
+    "redux-actions": "^0.12.0"
+  },
+  "devDependencies": {
+    "ava": "^0.16.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.22.0",
+    "sass-loader": "^4.0.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.1"
+  }
+}
