@@ -4,8 +4,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
-
 import {asyncIncrement} from 'actions/test'
+import styles from 'styles/main.scss'
 
 @connect(
   state => {
@@ -26,7 +26,7 @@ export default class TestContainer extends React.Component {
     return (
       <div>
       <p>{this.props.count}</p>
-      <button onClick={this.onClick}>Increment One</button>
+      <button onClick={this.onClick}>Async Increment One</button>
       </div>
     )
   }
