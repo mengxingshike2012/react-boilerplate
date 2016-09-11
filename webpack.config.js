@@ -39,8 +39,5 @@ module.exports = {
       cache: false
     }),
     new ExtractTextWebPackPlugin("styles.css"),
-  ],
-  devServer: {
-
-  }
+  ]
 }

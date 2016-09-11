@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, browserHistory } from 'react-router'
 import { syncHistoryWithStore} from 'react-router-redux'
 
-import { TestContainer, NextPageContainer } from 'containers/index';
+import { TestContainer, NextPageContainer, FlexContainer } from 'containers/index';
 import configure from './stores/configureStore';
 
 const initalState = {count: 0};
@@ -19,6 +19,7 @@ ReactDOM.render(
     <Router history={history}>
       <Route path="/" component={TestContainer} />
       <Route path="/next" component={NextPageContainer} />
+      <Route path="/flex" component={FlexContainer} />
     </Router>
   </Provider>,
   document.getElementById('root')
