@@ -13,7 +13,7 @@ module.exports = {
 
   cache: false,
   debug: true,
-  devtool: 'eval',
+  devtool: 'source-map',
 
   module: {
     loaders: [
@@ -24,7 +24,6 @@ module.exports = {
       },
       {
         test: /\.scss/,
-        // loader: ExtractTextWebPackPlugin.extract("style","css","sass")
         loader: 'style-loader!css-loader!autoprefixer-loader?{browsers:["last 2 version"]}!sass-loader?outputStyle=expanded'
       },
     ]

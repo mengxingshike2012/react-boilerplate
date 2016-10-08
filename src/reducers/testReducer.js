@@ -10,4 +10,4 @@ export default handleActions({
   'do increment'(state, action) {
     return state+1;
   }
-}, {});
+}, 0);
