@@ -3,13 +3,13 @@ import {
 } from 'redux-saga';
 import {
   put,
-  call
+  call,
 } from 'redux-saga/effects';
 import * as V2exApi from 'apis/v2ex';
 
 export function* fetchHotTopics() {
   yield put({
-    type: 'fetchHotTopics/start'
+    type: 'fetchHotTopics/start',
   });
   const data = yield call(V2exApi.fetchHotTopics);
   yield put({
@@ -19,5 +19,5 @@ export function* fetchHotTopics() {
 }
 
 export default function* watchFetchHotTopics() {
-  yield* takeEvery('fetch hot topics', fetchHotTopics)
+  yield* takeEvery('fetch hot topics', fetchHotTopics);
 }

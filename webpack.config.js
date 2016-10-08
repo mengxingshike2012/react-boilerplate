@@ -13,30 +13,35 @@ module.exports = {
 
   cache: false,
   debug: true,
-  devtool: 'source-map',
+  devtool: 'cheap-module-eval-source-map',
 
   module: {
     loaders: [
       {
         test: /\.(js|jsx)$/,
-        include:[path.join(__dirname, 'src')],
-        loaders: ['react-hot', 'babel']
+        include: [path.join(__dirname, 'src')],
+        loaders: ['react-hot', 'babel'],
       },
       {
         test: /\.scss/,
-        loader: 'style-loader!css-loader!autoprefixer-loader?{browsers:["last 2 version"]}!sass-loader?outputStyle=expanded'
+        loaders: [
+          'style',
+          'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+          'autoprefixer?{browsers:["last 2 version"]}',
+          'sass?outputStyle=expanded',
+        ],
       },
-    ]
+    ],
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
-    root: path.resolve('./src')
+    root: path.resolve('./src'),
   },
   plugins: [
     new HtmlWebPackPlugin({
       template: 'src/index.html',
-      cache: false
+      cache: false,
     }),
-    new ExtractTextWebPackPlugin("styles.css"),
-  ]
-}
+    new ExtractTextWebPackPlugin('styles.css'),
+  ],
+};
