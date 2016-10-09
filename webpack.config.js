@@ -9,6 +9,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'main.js',
+    publicpath: '/asserts/main.js',
   },
 
   cache: false,
@@ -42,6 +43,5 @@ module.exports = {
       template: 'src/index.html',
       cache: false,
     }),
-    new ExtractTextWebPackPlugin('styles.css'),
   ],
 };

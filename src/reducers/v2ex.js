@@ -9,17 +9,17 @@ const initialState = {
 };
 
 export default handleActions({
-  'fetchHotTopics/start': function (state, action) {
-    return { ...state, isLoading: true };
-  },
-  'fetchHotTopics/end': function (state, action) {
-    return { ...state, topics: action.payload, isLoading: false };
-  },
-  'fetchTopicDetail/start': function (state, action) {
-    return { ...state, isLoading: true };
-  },
-  'fetchTopicDetail/end': function (state, action) {
-    return { ...state, detail: action.payload };
-  },
+  'fetchHotTopics/start': state => ({
+    ...state, isLoading: true,
+  }),
+  'fetchHotTopics/end': (state, action) => ({
+    ...state, topics: action.payload, isLoading: false,
+  }),
+  'fetchTopicDetail/start': state => ({
+    ...state, isLoading: true,
+  }),
+  'fetchTopicDetail/end': (state, action) => ({
+    ...state, detail: action.payload,
+  }),
 
 }, initialState);

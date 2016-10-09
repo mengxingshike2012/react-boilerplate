@@ -2,7 +2,6 @@ import React, {
   PropTypes,
 } from 'react';
 import { connect } from 'react-redux';
-import { routerShape, withRouter } from 'react-router';
 import css from 'react-css-modules';
 import styles from './index.scss';
 
@@ -14,9 +13,9 @@ import { fetchTopicDetail } from 'actions/v2ex';
 @css(styles)
 export default class TopicDetail extends React.Component {
   static propTypes = {
-    router: routerShape,
     params: PropTypes.object,
     data: PropTypes.object,
+    dispatch: PropTypes.object,
   }
   componentDidMount() {
     const id = this.props.params.id;

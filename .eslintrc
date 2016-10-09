@@ -5,14 +5,9 @@
         "browser": true
     },
     "rules": {
-        "generator-star-spacing": 0,
-        "babel/generator-star-spacing": 1,
-        "new-cap": 0,
-        "babel/new-cap": 1,
-        "babel/object-shorthand": 1,
-        "react/prefer-stateless-function": 1,
+      "babel/object-shorthand": 1,
         "react/prop-types": 1,
-        "react/sort-comp": 0
+        "react/sort-comp": 1,
     },
     "settings": {
         "import/resolver": {

@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, Route, browserHistory } from 'react-router';
+import { Router, Route, hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 import configure from 'store/configureStore';
@@ -10,7 +10,7 @@ import V2exHotTopics from 'containers/index';
 import V2exTopicDetail from 'containers/detail';
 
 const store = configure();
-const history = syncHistoryWithStore(browserHistory, store);
+const history = syncHistoryWithStore(hashHistory, store);
 
 history.listen(location => console.log(location));
 
