@@ -13,7 +13,7 @@ module.exports = {
 
   cache: false,
   debug: true,
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval',
 
   module: {
     loaders: [

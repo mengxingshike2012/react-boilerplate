@@ -5,8 +5,9 @@ import { Provider } from 'react-redux';
 import { Router, Route, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
-import V2exHotTopics from 'containers/index';
 import configure from 'store/configureStore';
+import V2exHotTopics from 'containers/index';
+import V2exTopicDetail from 'containers/detail';
 
 const store = configure();
 const history = syncHistoryWithStore(browserHistory, store);
@@ -17,6 +18,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={V2exHotTopics} />
+      <Route path="/topic/:id" component={V2exTopicDetail} />
     </Router>
   </Provider>,
   document.getElementById('root')
