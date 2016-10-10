@@ -15,7 +15,7 @@ export default class TopicDetail extends React.Component {
   static propTypes = {
     params: PropTypes.object,
     data: PropTypes.object,
-    dispatch: PropTypes.object,
+    dispatch: PropTypes.func,
   }
   componentDidMount() {
     const id = this.props.params.id;
