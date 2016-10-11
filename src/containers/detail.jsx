@@ -9,6 +9,7 @@ import { fetchTopicDetail } from 'actions/v2ex';
 
 @connect(state => ({
   data: state.v2ex.detail,
+  isLoading: state.v2ex.isLoading,
 }))
 @css(styles)
 export default class TopicDetail extends React.Component {
@@ -16,6 +17,7 @@ export default class TopicDetail extends React.Component {
     params: PropTypes.object,
     data: PropTypes.object,
     dispatch: PropTypes.func,
+    isLoading: PropTypes.bool,
   }
   componentDidMount() {
     const id = this.props.params.id;
@@ -23,7 +25,8 @@ export default class TopicDetail extends React.Component {
   }
 
   render() {
-    const { data } = this.props;
+    const { data, isLoading } = this.props;
+    if (isLoading) return null;
     if (!data) return <div>Not Matched!</div>;
     return (
       <div styleName="main">
