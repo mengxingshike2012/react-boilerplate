@@ -4,7 +4,7 @@
   "description": "to be a quick bolierplate for full suits of react, built by webpack",
   "main": "main.js",
   "scripts": {
-    "start": "webpack-dev-server --inline --hot --history-api-fallback",
+    "start": "webpack-dev-server --progress --inline --hot --history-api-fallback",
     "build": "webpack --progress --colors",
     "serve": "nodemon server.js"
   },

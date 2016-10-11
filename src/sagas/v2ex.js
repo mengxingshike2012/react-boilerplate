@@ -37,8 +37,6 @@ export function* watchFetchTopicDetail() {
   yield takeEvery('fetch topic detail', fetchTopicDetail);
 }
 
-// it doesn't work
 export default function* v2exSaga() {
-  yield takeEvery('fetch hot topics', fetchHotTopics);
-  yield takeEvery('fetch topic detail', fetchTopicDetail);
+  yield [watchFetchHotTopics(), watchFetchTopicDetail()];
 }
