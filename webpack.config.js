@@ -9,7 +9,6 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'main.js',
-    publicpath: '/asserts/main.js',
   },
 
   cache: false,
@@ -25,12 +24,6 @@ module.exports = {
       },
       {
         test: /\.scss/,
-        // loaders: [
-        //   'style',
-        //   'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
-        //   'autoprefixer?{browsers:["last 2 version"]}',
-        //   'sass?outputStyle=expanded',
-        // ],
         loader: ExtractTextWebPackPlugin.extract(
             'style',
             'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
