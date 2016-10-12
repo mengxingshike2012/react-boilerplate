@@ -3,9 +3,9 @@ import React, {
 } from 'react';
 import { connect } from 'react-redux';
 import css from 'react-css-modules';
-import styles from './index.scss';
-
 import { fetchTopicDetail } from 'actions/v2ex';
+
+import styles from './index.scss';
 
 @connect(state => ({
   data: state.v2ex.detail,
