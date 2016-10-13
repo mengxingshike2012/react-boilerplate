@@ -3,11 +3,23 @@
   flex-direction: column;
   padding: 0 100px;
   margin-top: 70px;
+  border-radius: 5px;
+  background-color: #fff;
 }
 
-.topic {
+.media {
   height: 30px;
-  text-align: center;
+  display:flex;
+
+  .media-left {
+    margin-right: 10px;
+    flex-grow: 0;
+    flex-shrik: 0;
+  }
+  .media-content {
+    flex: 1;
+  }
+
 }
 .title {
   text-align: center;

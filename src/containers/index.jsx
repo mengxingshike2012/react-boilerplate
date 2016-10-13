@@ -31,8 +31,11 @@ export default class V2exTopics extends React.Component {
     return (
       <div styleName="main">
         {data.map(topic =>
-          <div styleName="topic" key={topic.id}>
-            <Link to={`/topic/${topic.id}`}>{topic.title}</Link>
+          <div styleName="media" key={topic.id}>
+            <div styleName="media-left" >
+              <img src={topic.member.avatar_normal} alt="avatar" />
+            </div>
+            <div styleName="media-content"><Link to={`/topic/${topic.id}`}>{topic.title}</Link></div>
           </div>)}
       </div>
     );
