@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "webpack-dev-server --progress --inline --hot --history-api-fallback",
-    "serve": "nodemon server.js",
+    "serve": "nodemon --watch server.js server.js",
     "build": "webpack --progress --colors"
   },
   "keywords": [
