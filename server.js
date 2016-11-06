@@ -4,27 +4,26 @@ const fetch = require('isomorphic-fetch');
 
 const app = express();
 const api = express.Router();
+
 const hostname = 'https://www.v2ex.com';
 const port = 8001;
 api
   .get('/topics/hot.json', (req, res) => {
-    const path = req.originalUrl.replace('/\/api/', '');
+    const path = req.originalUrl.replace('//api/', '');
     const url = hostname + path;
-    console.log(url);
-    fetch(url).then((data) => {
-      return data.json();
-    }).then((json) => {
-      res.send(json);
-    }).catch((e) => {
+    fetch(url).then(data =>
+      data.json()
+    ).then(json =>
+      res.send(json)
+    ).catch((e) => {
       console.log(e);
     });
   })
   .get('/topics/:id', (req, res) => {
     const url = `${hostname}/api/topics/show.json?id=${req.params.id}`;
-    console.log(url);
-    fetch(url).then((data) => {
-      return data.json();
-    }).then((json) => {
+    fetch(url).then(data =>
+      data.json()
+    ).then((json) => {
       res.send(json);
     }).catch((e) => {
       console.log(e);
