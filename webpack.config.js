@@ -1,47 +1,70 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const ExtractTextWebPackPlugin = require('extract-text-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 
-  entry: './src/index.jsx',
+  entry: {
+    main: [
+      'react-hot-loader/patch',
+      'webpack-dev-server/client?http://localhost:8080',
+      'webpack/hot/only-dev-server',
+      './index.jsx'],
+
+    vendor: ['react', 'react-dom', 'redux', 'react-redux', 'react-router', 'react-router-redux'],
+  },
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'main.js',
+    filename: '[name].js',
+    publicPath: '/',
   },
-
+  context: path.resolve(__dirname, 'src'),
   cache: false,
-  debug: true,
-  devtool: 'eval',
-
+  devtool: 'cheap-eval-source-map',
+  devServer: {
+    hot: true,
+    contentBase: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+  },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.(js|jsx)$/,
         include: [path.join(__dirname, 'src')],
-        loaders: ['react-hot', 'babel'],
+        loader: 'babel-loader',
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextWebPackPlugin.extract(
-            'style',
-            ['css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
-            'autoprefixer?{browsers:["last 2 version"]}',
-            'sass?outputStyle=expanded']
-        ),
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: ['css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+            'autoprefixer?{browsers:["last 2 version"]}', 'sass?outputStyle=expanded']
+        }),
       },
     ],
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
-    root: path.resolve('./src'),
+    modules: [
+      "node_modules",
+      path.resolve(__dirname, 'src')
+    ],
+    extensions: ['.js', '.jsx', ".css"],
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: 'src/index.html',
+      template: 'index.html',
       cache: false,
     }),
-    new ExtractTextWebPackPlugin('styles.css'),
+    new ExtractTextPlugin({
+      filename: 'bundle.css',
+      disable: false,
+      allChunks: true,
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor', 'manifest']
+    }),
+    new  webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
   ],
 };
