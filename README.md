@@ -1,4 +1,7 @@
-# react-boilerplate
+# react-boilerplate (updated 2017.01.23)
+
+It's target to be a very simple react-boilerplate.
+Produce Js files and options with css files.
 
 It aims to be a good enough template for react and it uses below packages:
 

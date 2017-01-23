@@ -1,29 +1,30 @@
+// webpack config for development
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const host = (process.env.HOST || 'localhost');
+const port = (+process.env.PORT + 1) || 8080;
+
 module.exports = {
-
-  entry: {
-    main: [
-      'react-hot-loader/patch',
-      'webpack-dev-server/client?http://localhost:8080',
-      'webpack/hot/only-dev-server',
-      './index.jsx'],
-
-    vendor: ['react', 'react-dom', 'redux', 'react-redux', 'react-router', 'react-router-redux'],
-  },
+  devtool: 'inline-source-map', // no conclusion which one is better
+  context: __dirname,
+  entry: [
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://' + host + ':' + port,
+    'webpack/hot/only-dev-server',
+    './src/index.jsx'],
   output: {
+    filename: 'bundle.js',
     path: path.join(__dirname, 'dist'),
-    filename: '[name].js',
+    // necessary for HMR to know where to load the hot update chunks
     publicPath: '/',
   },
-  context: path.resolve(__dirname, 'src'),
-  cache: false,
-  devtool: 'cheap-eval-source-map',
   devServer: {
     hot: true,
+    open: false,
+    historyApiFallback: true,
     contentBase: path.resolve(__dirname, 'dist'),
     publicPath: '/',
   },
@@ -36,11 +37,12 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract({
-          fallbackLoader: 'style-loader',
-          loader: ['css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
-            'autoprefixer?{browsers:["last 2 version"]}', 'sass?outputStyle=expanded']
-        }),
+        use: [
+          'style-loader',
+          'css-loader?modules&importLoaders=1',
+          'postcss-loader',
+          'sass-loader'
+        ]
       },
     ],
   },
@@ -53,16 +55,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: 'index.html',
+      template: 'src/index.html',
       cache: false,
-    }),
-    new ExtractTextPlugin({
-      filename: 'bundle.css',
-      disable: false,
-      allChunks: true,
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor', 'manifest']
     }),
     new  webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),

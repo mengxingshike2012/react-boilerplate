@@ -12,14 +12,14 @@ import styles from './index.scss';
 @connect(
   state => ({
     data: state.v2ex.topics,
-  })
+  }),
 )
 @css(styles)
 export default class V2exTopics extends React.Component {
 
   static propTypes = {
-    data: PropTypes.array,
-    dispatch: PropTypes.func,
+    data: PropTypes.array.isRequired,
+    dispatch: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
