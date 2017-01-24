@@ -1,22 +1,21 @@
 # react-boilerplate (updated 2017.01.23)
 
-It's target to be a very simple react-boilerplate.
-Produce Js files and options with css files.
+You want a perfect react boilerplate right, maybe it is!
 
-It aims to be a good enough template for react and it uses below packages:
-
+## React Ecosystem
 + react
 + redux
++ react-redux
++ redux-actions
 + react-router
 + react-router-redux
-+ redux-actions
 + redux-saga
 + react-css-modules
 
-and with below features:
-+ HRM
-+ Sass
-+ CSS Modules
+## Engineering
++ webpack2
++ babel
++ react-hot-loader
 
 ### how to run
 
@@ -29,5 +28,4 @@ npm start
 ```
 
 ### to do
-
 make it looks better!

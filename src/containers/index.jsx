@@ -18,8 +18,7 @@ import styles from './index.scss';
 export default class V2exTopics extends React.Component {
 
   static propTypes = {
-    data: PropTypes.array.isRequired,
-    dispatch: PropTypes.func.isRequired,
+    data: PropTypes.arrayOf.isRequired,
   }
 
   componentDidMount() {
@@ -30,6 +29,7 @@ export default class V2exTopics extends React.Component {
     const { data } = this.props;
     return (
       <div styleName="main">
+        <h1>V2ex Topics</h1>
         {data.map(topic =>
           <div styleName="media" key={topic.id}>
             <div styleName="media-left" >

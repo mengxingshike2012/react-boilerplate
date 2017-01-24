@@ -16,13 +16,5 @@ export default function configure(initialState) {
   );
   const store = createStore(rootReducer, initialState, enhancer);
   sagaMiddleware.run(rootSaga);
-
-  if (module.hot) {
-    module.hot.accept('../reducers/index.js', () => {
-      const nextReducer = require('../reducers/index.js');
-
-      store.replaceReducer(nextReducer);
-    });
-  }
   return store;
 }

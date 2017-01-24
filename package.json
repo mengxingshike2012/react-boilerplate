@@ -4,13 +4,13 @@
   "description": "to be a quick bolierplate for full suits of react, built by webpack",
   "main": "main.js",
   "scripts": {
-    "start": "node_modules/.bin/webpack-dev-server",
-    "serve": "nodemon --watch server.js server.js",
-    "build": "webpack --progress --colors"
+    "start": "webpack-dev-server --config webpack.config.dev.js",
+    "build": "webpack --config webpack.config.prod.js --progress --colors",
+    "serve": "nodemon --watch server.js server.js"
   },
   "keywords": [
     "react",
-    "webpack"
+    "webpack2"
   ],
   "author": "wind_fantasy",
   "license": "MIT",
@@ -41,6 +41,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.22.0",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.22.0",
+    "clean-webpack-plugin": "^0.1.15",
     "css-loader": "^0.26.1",
     "eslint": "^3.14.0",
     "eslint-config-airbnb": "^14.0.0",
@@ -60,6 +61,7 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.2.0",
-    "webpack-dev-server": "^2.2.0"
+    "webpack-dev-server": "^2.2.0",
+    "webpack-merge": "^2.4.0"
   }
 }
