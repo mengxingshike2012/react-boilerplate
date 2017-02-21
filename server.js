@@ -11,19 +11,14 @@ api
   .get('/topics/hot.json', (req, res) => {
     const path = req.originalUrl.replace('//api/', '');
     const url = hostname + path;
-    fetch(url).then(data =>
-      data.json()
-    ).then(json =>
-      res.send(json)
-    ).catch((e) => {
-      console.log(e);
-    });
+    fetch(url).then(data => data.json()).then(json =>
+      res.send(json)).catch((e) => {
+        console.log(e);
+      });
   })
   .get('/topics/:id', (req, res) => {
     const url = `${hostname}/api/topics/show.json?id=${req.params.id}`;
-    fetch(url).then(data =>
-      data.json()
-    ).then((json) => {
+    fetch(url).then(data => data.json()).then((json) => {
       res.send(json);
     }).catch((e) => {
       console.log(e);

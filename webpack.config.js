@@ -1,47 +1,50 @@
+// webpack basic configuration
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const ExtractTextWebPackPlugin = require('extract-text-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-
+  context: __dirname,
   entry: './src/index.jsx',
   output: {
-    path: path.join(__dirname, 'dist'),
     filename: 'main.js',
+    path: path.join(__dirname, 'dist'),
+    // necessary for HMR to know where to load the hot update chunks
+    publicPath: '/',
   },
-
-  cache: false,
-  debug: true,
-  devtool: 'eval',
-
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.(js|jsx)$/,
         include: [path.join(__dirname, 'src')],
-        loaders: ['react-hot', 'babel'],
+        loader: 'babel-loader',
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextWebPackPlugin.extract(
-            'style',
-            ['css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
-            'autoprefixer?{browsers:["last 2 version"]}',
-            'sass?outputStyle=expanded']
-        ),
+        loader: ExtractTextPlugin.extract({
+          fallbackLoader: 'style-loader',
+          loader: [
+            'css-loader?modules&importLoaders=1',
+            'postcss-loader',
+            'sass-loader'
+          ]
+        }),
       },
     ],
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
-    root: path.resolve('./src'),
+    modules: [
+      "node_modules",
+      path.resolve(__dirname, 'src')
+    ],
+    extensions: ['.js', '.jsx', ".css", ".scss"],
   },
   plugins: [
     new HtmlWebPackPlugin({
       template: 'src/index.html',
       cache: false,
     }),
-    new ExtractTextWebPackPlugin('styles.css'),
+    new ExtractTextPlugin('styles.css')
   ],
 };
