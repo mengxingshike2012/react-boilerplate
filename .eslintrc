@@ -12,7 +12,6 @@
     # "es6": true
   },
   "settings": {
-    # "import/core-modules": ["components", "actions", "api", "reducers", "utils", "constants"]
     "import/resolver": {
             "webpack": {
                 "config": "webpack.config.js"
