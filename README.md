@@ -14,8 +14,8 @@ You want a perfect react boilerplate right, maybe it is!
 
 ## Engineering
 + webpack2
-+ babel
-+ react-hot-loader
++ babel6
++ react-hot-loader3
 
 ### how to run
 
@@ -29,3 +29,10 @@ npm start
 
 ### to do
 make it looks better!
+
+### Valuable Refs
++ [douban-movie-react-ssr](https://github.com/ibufu/douban-movie-react-ssr)
+
+### peer projects
++ [unrversal-webpack]()
++ [ssr]()
